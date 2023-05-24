@@ -48,6 +48,26 @@ public class Automóvil {
         return icono;
     }
 
+    public Automóvil(String fabricante, String modelo) {
+        this.fabricante = fabricante;
+        this.modelo = modelo;
+    }
+    public Automóvil() {
+    }
+    public Automóvil(String fabricante, String modelo, String color) {
+        this(fabricante,modelo);
+        this.color = color;
+    }
+    public Automóvil(String fabricante, String modelo, String color, double cilindrada) {
+        this(fabricante,modelo,color);
+        this.cilindrada = cilindrada;
+    }
+    public Automóvil(String fabricante, String modelo, String color, double cilindrada, int capacidadEstanque) {
+        this(fabricante,modelo,color,cilindrada);
+        this.capacidadEstanque = capacidadEstanque;
+    }
+
+
     public String verDetalle(){
         StringBuilder sb = new StringBuilder();
         sb.append("auto = " + this.fabricante);
@@ -77,5 +97,27 @@ public class Automóvil {
         return km/(capacidadEstanque*(porcentajeBencina/100f));
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj){
+            return true;
+        }
+        if(!(obj instanceof Automóvil)){
+            return false;
+        }
+        Automóvil a = (Automóvil)obj;
+        return (this.fabricante != null && this.fabricante.equals(a.getFabricante())
+                && this.modelo != null && this.modelo.equals(a.getModelo()));
+    }
 
+    @Override
+    public String toString() {
+        return "Automóvil{\n" +
+                "\tfabricante = " + fabricante +
+                "\n\tmodelo = " + modelo +
+                "\n\tcolor = " + color +
+                "\n\tcilindrada = " + cilindrada +
+                "\n\tcapacidadEstanque = " + capacidadEstanque +
+                "\n}";
+    }
 }
