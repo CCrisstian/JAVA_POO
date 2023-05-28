@@ -7,8 +7,22 @@ public class Automóvil {
     private String color;
     private double cilindrada;
     private int capacidadEstanque = 40;
+    private static String colorPatente = "Naranja";
+    /*En Java, la palabra clave "static" se utiliza para declarar un miembro de clase que pertenece a la clase en sí
+    misma, en lugar de pertenecer a instancias individuales de la clase. Esto significa que el atributo o método está
+    asociado a la clase en general, y no a objetos específicos creados a partir de la clase.
 
-    //*MÉTODOS GET(LEER)*//
+    Cuando se declara un atributo como static, solo existe una única copia de ese atributo compartido por todas las
+    instancias de la clase. Esto significa que si se modifica el valor de un atributo estático en una instancia, ese
+    cambio se reflejará en todas las demás instancias y en la propia clase.*/
+
+    private static int capacidadEstanqueESTATICO = 30;
+
+    private int id;
+    private static int ultimoId;
+
+
+    //*---------------MÉTODOS GET(LEER)------------------------------*//
     public String getFabricante() {
         return fabricante;
     }
@@ -24,8 +38,17 @@ public class Automóvil {
     public int getCapacidadEstanque() {
         return capacidadEstanque;
     }
+    public static String getColorPatente() {
+        return colorPatente;
+    }
+    public static int getCapacidadEstanqueESTATICO() {
+        return capacidadEstanqueESTATICO;
+    }
+    public int getId() {
+        return id;
+    }
 
-    //*MÉTODOS SET(ACTUALIZAR-ESCRIBIR)*//
+    //*-------------------MÉTODOS SET(ACTUALIZAR-ESCRIBIR)------------------------------*//
     public void setFabricante(String fabricante) {
         this.fabricante = fabricante;
     }
@@ -41,18 +64,31 @@ public class Automóvil {
     public void setCapacidadEstanque(int capacidadEstanque) {
         this.capacidadEstanque = capacidadEstanque;
     }
+    public static void setColorPatente(String colorPatente) {
+        Automóvil.colorPatente = colorPatente;
+    }
+    public static void setCapacidadEstanqueESTATICO(int capacidadEstanqueESTATICO) {
+        Automóvil.capacidadEstanqueESTATICO = capacidadEstanqueESTATICO;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
 
+    /*----------------------------------------IMAGEN-----------------------------------------*/
     private ImageIcon icono = new ImageIcon("C:\\JAVA\\JAVA_POO\\src\\auto.jpg");
-
     public ImageIcon getIcono() {
         return icono;
     }
+    /*----------------------------------------IMAGEN-----------------------------------------*/
 
+
+    public Automóvil(){
+        this.id = ++ultimoId;
+    }
     public Automóvil(String fabricante, String modelo) {
+        this();
         this.fabricante = fabricante;
         this.modelo = modelo;
-    }
-    public Automóvil() {
     }
     public Automóvil(String fabricante, String modelo, String color) {
         this(fabricante,modelo);
@@ -73,7 +109,9 @@ public class Automóvil {
         sb.append("auto = " + this.fabricante);
         sb.append("\nauto = " + this.modelo);
         sb.append("\nauto.color = " + this.color);
-        sb.append("\nauto.cilindrada = " + this.cilindrada +"\n");
+        sb.append("\nauto.cilindrada = " + this.cilindrada);
+        sb.append("\nauto.colorPatente = " + Automóvil.colorPatente);
+        sb.append("\nauto.id = " + id + "\n");
         return sb.toString();
     }
     public String acelerar(int rpm){
@@ -95,6 +133,9 @@ public class Automóvil {
     }
     public float calcularConsumo(int km,int porcentajeBencina){
         return km/(capacidadEstanque*(porcentajeBencina/100f));
+    }
+    public static float calcularConsumoESTATICO(int km, int porcentajeBencina){
+        return km/(Automóvil.capacidadEstanqueESTATICO * (porcentajeBencina / 100f));
     }
 
     @Override
@@ -118,6 +159,7 @@ public class Automóvil {
                 "\n\tcolor = " + color +
                 "\n\tcilindrada = " + cilindrada +
                 "\n\tcapacidadEstanque = " + capacidadEstanque +
-                "\n}";
+                "\n\tid = " + id +"\n}";
     }
+
 }

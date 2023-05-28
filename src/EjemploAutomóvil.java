@@ -49,7 +49,7 @@ public class EjemploAutomóvil {
         System.out.println("\nUsando el método toString() sobrescrito");
         System.out.println(nissan.toString());
 
-        JOptionPane.showMessageDialog(null,mazda,"Auto",JOptionPane.INFORMATION_MESSAGE, mazda.getIcono());
+        /**JOptionPane.showMessageDialog(null,mazda,"Auto",JOptionPane.INFORMATION_MESSAGE, mazda.getIcono());**/
 
 
     }
