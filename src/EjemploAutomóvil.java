@@ -5,25 +5,25 @@ public class EjemploAutomóvil {
     public static void main(String[] args) {
         Automóvil subaru = new Automóvil("Subaru","Impreza");
         subaru.setCilindrada(2.0);
-        subaru.setColor("azul");
+        subaru.setColor(Color.AZUL);
         System.out.println(subaru.verDetalle());
         System.out.println(subaru.acelerar(3000));
         System.out.println(subaru.frenar());
         System.out.println("==============================================\n");
 
-        Automóvil mazda = new Automóvil("Mazda","BT-50","Rojo",3.0,60);
+        Automóvil mazda = new Automóvil("Mazda","BT-50",Color.ROJO,3.0,60);
         System.out.println(mazda.verDetalle());
         System.out.println(mazda.acelerarFrenar(4000));
         System.out.println("Kilómetros por litro "+ subaru.calcularConsumo(300,0.6f));
         System.out.println("Kilómetros por litro "+subaru.calcularConsumo(300,60));
         System.out.println("==============================================\n");
 
-        Automóvil nissan = new Automóvil("Nisan","Navara","Gris oscuro",3.5,50);
+        Automóvil nissan = new Automóvil("Nisan","Navara",Color.GRIS,3.5,50);
         System.out.println(nissan.verDetalle());
         System.out.println("Kilómetros por litro "+ nissan.calcularConsumo(300,60));
         System.out.println("==============================================\n");
 
-        Automóvil nissan2 = new Automóvil("Nisan","Navara","Gris oscuro",3.5,50);
+        Automóvil nissan2 = new Automóvil("Nisan","Navara",Color.GRIS,3.5,50);
         System.out.println("¿nissan == nissan2? --> " + (nissan == nissan2));
         /*"==" se utiliza para comparar la igualdad entre dos objetos o valores primitivos. Cuando se utiliza con objetos,
         el operador "==" compara las referencias de los objetos, es decir, verifica si ambos objetos apuntan a la misma

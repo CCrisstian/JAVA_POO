@@ -4,16 +4,18 @@ public class EjemploAutomóvilStatic {
     public static void main(String[] args) {
         Automóvil subaru = new Automóvil("Subaru","Impreza");
         subaru.setCilindrada(2.0);
-        subaru.setColor("Blanco");
+        subaru.setColor(Color.BLANCO);
 
-        Automóvil mazda = new Automóvil("Mazda","BT-50","Rojo",3.0,60);
+        Automóvil mazda = new Automóvil("Mazda","BT-50",Color.ROJO,3.0,60);
 
-        Automóvil nissan = new Automóvil("Nisan","Navara","Gris oscuro",3.5,50);
-        Automóvil nissan2 = new Automóvil("Nisan","Navara","Gris oscuro",3.5,50);
+        Automóvil nissan = new Automóvil("Nisan","Navara",Color.GRIS,3.5,50);
+
+        Automóvil nissan2 = new Automóvil("Nisan","Navara",Color.GRIS,3.5,50);
+        nissan2.setColor(Color.AMARILLO);
 
         Automóvil auto = new Automóvil();
 
-        Automóvil.setColorPatente("AZUL");
+        Automóvil.setColorPatente(Color.AZUL);
 
         System.out.println(subaru.verDetalle());
         System.out.println(mazda.verDetalle());
@@ -35,6 +37,12 @@ public class EjemploAutomóvilStatic {
         System.out.println("Kilómetros por litro SUBARU = " + subaru.calcularConsumoESTATICO(300,60));
         System.out.println("Kilómetros por litro NISSAN = " + nissan.calcularConsumoESTATICO(300,60));
         System.out.println("Kilómetros por litro MAZDA = " + mazda.calcularConsumoESTATICO(300,60));
+        System.out.println("\n==========================================================================\n");
+
+        System.out.println("Atributos 'static'\n");
+        System.out.println("Automóvil.VELOCIDAD_MAX_CARRETERA = " + Automóvil.VELOCIDAD_MAX_CARRETERA);
+        System.out.println("Automóvil.VELOCIDAD_MAX_CIUDAD =" + Automóvil.VELOCIDAD_MAX_CIUDAD);
+
     }
 }
 

@@ -4,10 +4,10 @@ public class Automóvil {
 
     private String fabricante;
     private String modelo;
-    private String color;
+    private Color color = Color.GRIS;
     private double cilindrada;
     private int capacidadEstanque = 40;
-    private static String colorPatente = "Naranja";
+    private static Color colorPatente = Color.NARANJO;
     /*En Java, la palabra clave "static" se utiliza para declarar un miembro de clase que pertenece a la clase en sí
     misma, en lugar de pertenecer a instancias individuales de la clase. Esto significa que el atributo o método está
     asociado a la clase en general, y no a objetos específicos creados a partir de la clase.
@@ -21,6 +21,9 @@ public class Automóvil {
     private int id;
     private static int ultimoId;
 
+    public static final Integer VELOCIDAD_MAX_CARRETERA = 120;
+
+    public static final int VELOCIDAD_MAX_CIUDAD = 60;
 
     //*---------------MÉTODOS GET(LEER)------------------------------*//
     public String getFabricante() {
@@ -29,7 +32,7 @@ public class Automóvil {
     public String getModelo() {
         return modelo;
     }
-    public String getColor() {
+    public Color getColor() {
         return color;
     }
     public double getCilindrada() {
@@ -38,7 +41,7 @@ public class Automóvil {
     public int getCapacidadEstanque() {
         return capacidadEstanque;
     }
-    public static String getColorPatente() {
+    public static Color getColorPatente() {
         return colorPatente;
     }
     public static int getCapacidadEstanqueESTATICO() {
@@ -55,7 +58,7 @@ public class Automóvil {
     public void setModelo(String modelo) {
         this.modelo = modelo;
     }
-    public void setColor(String color) {
+    public void setColor(Color color) {
         this.color = color;
     }
     public void setCilindrada(double cilindrada) {
@@ -64,7 +67,7 @@ public class Automóvil {
     public void setCapacidadEstanque(int capacidadEstanque) {
         this.capacidadEstanque = capacidadEstanque;
     }
-    public static void setColorPatente(String colorPatente) {
+    public static void setColorPatente(Color colorPatente) {
         Automóvil.colorPatente = colorPatente;
     }
     public static void setCapacidadEstanqueESTATICO(int capacidadEstanqueESTATICO) {
@@ -90,15 +93,29 @@ public class Automóvil {
         this.fabricante = fabricante;
         this.modelo = modelo;
     }
-    public Automóvil(String fabricante, String modelo, String color) {
+
+    public static final String COLOR_ROJO = "Rojo";
+    public static final String COLOR_AMARILLO = "Amarillo";
+    public static final String COLOR_AZUL = "Azul";
+    public static final String COLOR_BLANCO = "Blanco";
+    public static final String COLOR_GRIS = "Gris Oscuro";
+
+    /*Cuando se declara un atributo como final y estático,
+    significa que se comparte entre todas las instancias de
+    la clase y su valor no puede ser modificado en ningún lugar
+    del código, ya sea en el constructor, en métodos o en
+    cualquier otro contexto*/
+
+
+    public Automóvil(String fabricante, String modelo, Color color) {
         this(fabricante,modelo);
         this.color = color;
     }
-    public Automóvil(String fabricante, String modelo, String color, double cilindrada) {
+    public Automóvil(String fabricante, String modelo, Color color, double cilindrada) {
         this(fabricante,modelo,color);
         this.cilindrada = cilindrada;
     }
-    public Automóvil(String fabricante, String modelo, String color, double cilindrada, int capacidadEstanque) {
+    public Automóvil(String fabricante, String modelo, Color color, double cilindrada, int capacidadEstanque) {
         this(fabricante,modelo,color,cilindrada);
         this.capacidadEstanque = capacidadEstanque;
     }
