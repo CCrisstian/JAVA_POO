@@ -4,10 +4,13 @@ public class Automóvil {
 
     private String fabricante;
     private String modelo;
-    private String color;
-    private double cilindrada;
-    private int capacidadEstanque = 40;
-    private static String colorPatente = "Naranja";
+    private Color color = Color.GRIS;
+    private Motor motor;
+    private Estanque estanque;
+    private Persona conductor;
+    private Rueda[] ruedas;
+
+    private static Color colorPatente = Color.NARANJO;
     /*En Java, la palabra clave "static" se utiliza para declarar un miembro de clase que pertenece a la clase en sí
     misma, en lugar de pertenecer a instancias individuales de la clase. Esto significa que el atributo o método está
     asociado a la clase en general, y no a objetos específicos creados a partir de la clase.
@@ -21,6 +24,9 @@ public class Automóvil {
     private int id;
     private static int ultimoId;
 
+    public static final Integer VELOCIDAD_MAX_CARRETERA = 120;
+
+    public static final int VELOCIDAD_MAX_CIUDAD = 60;
 
     //*---------------MÉTODOS GET(LEER)------------------------------*//
     public String getFabricante() {
@@ -29,16 +35,11 @@ public class Automóvil {
     public String getModelo() {
         return modelo;
     }
-    public String getColor() {
+    public Color getColor() {
         return color;
     }
-    public double getCilindrada() {
-        return cilindrada;
-    }
-    public int getCapacidadEstanque() {
-        return capacidadEstanque;
-    }
-    public static String getColorPatente() {
+
+    public static Color getColorPatente() {
         return colorPatente;
     }
     public static int getCapacidadEstanqueESTATICO() {
@@ -48,6 +49,22 @@ public class Automóvil {
         return id;
     }
 
+    public Motor getMotor() {
+        return motor;
+    }
+
+    public Estanque getEstanque() {
+        return estanque;
+    }
+
+    public Persona getConductor() {
+        return conductor;
+    }
+
+    public Rueda[] getRuedas() {
+        return ruedas;
+    }
+
     //*-------------------MÉTODOS SET(ACTUALIZAR-ESCRIBIR)------------------------------*//
     public void setFabricante(String fabricante) {
         this.fabricante = fabricante;
@@ -55,16 +72,11 @@ public class Automóvil {
     public void setModelo(String modelo) {
         this.modelo = modelo;
     }
-    public void setColor(String color) {
+    public void setColor(Color color) {
         this.color = color;
     }
-    public void setCilindrada(double cilindrada) {
-        this.cilindrada = cilindrada;
-    }
-    public void setCapacidadEstanque(int capacidadEstanque) {
-        this.capacidadEstanque = capacidadEstanque;
-    }
-    public static void setColorPatente(String colorPatente) {
+
+    public static void setColorPatente(Color colorPatente) {
         Automóvil.colorPatente = colorPatente;
     }
     public static void setCapacidadEstanqueESTATICO(int capacidadEstanqueESTATICO) {
@@ -72,6 +84,22 @@ public class Automóvil {
     }
     public void setId(int id) {
         this.id = id;
+    }
+
+    public void setMotor(Motor motor) {
+        this.motor = motor;
+    }
+
+    public void setEstanque(Estanque estanque) {
+        this.estanque = estanque;
+    }
+
+    public void setConductor(Persona conductor) {
+        this.conductor = conductor;
+    }
+
+    public void setRuedas(Rueda[] ruedas) {
+        this.ruedas = ruedas;
     }
 
     /*----------------------------------------IMAGEN-----------------------------------------*/
@@ -90,26 +118,47 @@ public class Automóvil {
         this.fabricante = fabricante;
         this.modelo = modelo;
     }
-    public Automóvil(String fabricante, String modelo, String color) {
+
+    public static final String COLOR_ROJO = "Rojo";
+    public static final String COLOR_AMARILLO = "Amarillo";
+    public static final String COLOR_AZUL = "Azul";
+    public static final String COLOR_BLANCO = "Blanco";
+    public static final String COLOR_GRIS = "Gris Oscuro";
+
+    /*Cuando se declara un atributo como final y estático,
+    significa que se comparte entre todas las instancias de
+    la clase y su valor no puede ser modificado en ningún lugar
+    del código, ya sea en el constructor, en métodos o en
+    cualquier otro contexto*/
+
+
+    public Automóvil(String fabricante, String modelo, Color color) {
         this(fabricante,modelo);
         this.color = color;
     }
-    public Automóvil(String fabricante, String modelo, String color, double cilindrada) {
+    public Automóvil(String fabricante, String modelo, Color color, Motor motor) {
         this(fabricante,modelo,color);
-        this.cilindrada = cilindrada;
+        this.motor = motor;
     }
-    public Automóvil(String fabricante, String modelo, String color, double cilindrada, int capacidadEstanque) {
-        this(fabricante,modelo,color,cilindrada);
-        this.capacidadEstanque = capacidadEstanque;
+    public Automóvil(String fabricante, String modelo, Color color, Motor motor, Estanque estanque) {
+        this(fabricante,modelo,color,motor);
+        this.estanque = estanque;
+    }
+
+    public Automóvil(String fabricante, String modelo, Color color, Motor motor, Estanque estanque, Persona conductor, Rueda[] ruedas, ImageIcon icono) {
+        this(fabricante, modelo, color, motor, estanque);
+        this.conductor = conductor;
+        this.ruedas = ruedas;
+        this.icono = icono;
     }
 
 
     public String verDetalle(){
         StringBuilder sb = new StringBuilder();
         sb.append("auto = " + this.fabricante);
-        sb.append("\nauto = " + this.modelo);
+        sb.append("\nmodelo = " + this.modelo);
         sb.append("\nauto.color = " + this.color);
-        sb.append("\nauto.cilindrada = " + this.cilindrada);
+        sb.append("\nauto.cilindrada = " + this.motor.getCilindrada());
         sb.append("\nauto.colorPatente = " + Automóvil.colorPatente);
         sb.append("\nauto.id = " + id + "\n");
         return sb.toString();
@@ -129,10 +178,10 @@ public class Automóvil {
     }
 
     public float calcularConsumo(int km,float porcentajeBencina){
-        return km/(capacidadEstanque*porcentajeBencina);
+        return km/(estanque.getCapacidad()*porcentajeBencina);
     }
     public float calcularConsumo(int km,int porcentajeBencina){
-        return km/(capacidadEstanque*(porcentajeBencina/100f));
+        return km/(estanque.getCapacidad()*(porcentajeBencina/100f));
     }
     public static float calcularConsumoESTATICO(int km, int porcentajeBencina){
         return km/(Automóvil.capacidadEstanqueESTATICO * (porcentajeBencina / 100f));
@@ -157,9 +206,10 @@ public class Automóvil {
                 "\tfabricante = " + fabricante +
                 "\n\tmodelo = " + modelo +
                 "\n\tcolor = " + color +
-                "\n\tcilindrada = " + cilindrada +
-                "\n\tcapacidadEstanque = " + capacidadEstanque +
+                "\n\tcilindrada = " + motor.getCilindrada() +
+                "\n\tcapacidadEstanque = " + estanque.getCapacidad() +
                 "\n\tid = " + id +"\n}";
     }
+
 
 }
