@@ -7,9 +7,6 @@ public class Automóvil {
     private String color;
     private double cilindrada;
     private int capacidadEstanque = 40;
-
-    private TipoAutomovil tipo;
-
     private static String colorPatente = "Naranja";
     /*En Java, la palabra clave "static" se utiliza para declarar un miembro de clase que pertenece a la clase en sí
     misma, en lugar de pertenecer a instancias individuales de la clase. Esto significa que el atributo o método está
@@ -51,10 +48,6 @@ public class Automóvil {
         return id;
     }
 
-    public TipoAutomovil getTipo() {
-        return tipo;
-    }
-
     //*-------------------MÉTODOS SET(ACTUALIZAR-ESCRIBIR)------------------------------*//
     public void setFabricante(String fabricante) {
         this.fabricante = fabricante;
@@ -77,11 +70,6 @@ public class Automóvil {
     public static void setCapacidadEstanqueESTATICO(int capacidadEstanqueESTATICO) {
         Automóvil.capacidadEstanqueESTATICO = capacidadEstanqueESTATICO;
     }
-
-    public void setTipo(TipoAutomovil tipo) {
-        this.tipo = tipo;
-    }
-
     public void setId(int id) {
         this.id = id;
     }
@@ -118,13 +106,12 @@ public class Automóvil {
 
     public String verDetalle(){
         StringBuilder sb = new StringBuilder();
-        sb.append("Auto = " + this.fabricante);
-        sb.append("\nModelo = " + this.modelo);
-        sb.append("\nTipo = " + this.tipo);
-        sb.append("\nColor = " + this.color);
-        sb.append("\nCilindrada = " + this.cilindrada);
-        sb.append("\nColorPatente = " + Automóvil.colorPatente);
-        sb.append("\nId = " + id + "\n");
+        sb.append("auto = " + this.fabricante);
+        sb.append("\nauto = " + this.modelo);
+        sb.append("\nauto.color = " + this.color);
+        sb.append("\nauto.cilindrada = " + this.cilindrada);
+        sb.append("\nauto.colorPatente = " + Automóvil.colorPatente);
+        sb.append("\nauto.id = " + id + "\n");
         return sb.toString();
     }
     public String acelerar(int rpm){

@@ -5,17 +5,12 @@ public class EjemploAutomóvilStatic {
         Automóvil subaru = new Automóvil("Subaru","Impreza");
         subaru.setCilindrada(2.0);
         subaru.setColor("Blanco");
-        subaru.setTipo(TipoAutomovil.HATCHBACK);
 
         Automóvil mazda = new Automóvil("Mazda","BT-50","Rojo",3.0,60);
-        mazda.setTipo(TipoAutomovil.PICKUP);
-
 
         Automóvil nissan = new Automóvil("Nisan","Navara","Gris oscuro",3.5,50);
-        nissan.setTipo(TipoAutomovil.PICKUP);
-
         Automóvil nissan2 = new Automóvil("Nisan","Navara","Gris oscuro",3.5,50);
-        nissan2.setTipo(TipoAutomovil.PICKUP);
+
         Automóvil auto = new Automóvil();
 
         Automóvil.setColorPatente("AZUL");
@@ -40,13 +35,6 @@ public class EjemploAutomóvilStatic {
         System.out.println("Kilómetros por litro SUBARU = " + subaru.calcularConsumoESTATICO(300,60));
         System.out.println("Kilómetros por litro NISSAN = " + nissan.calcularConsumoESTATICO(300,60));
         System.out.println("Kilómetros por litro MAZDA = " + mazda.calcularConsumoESTATICO(300,60));
-        System.out.println("\n==========================================================================\n");
-
-        TipoAutomovil tipoSubaru = subaru.getTipo();
-        System.out.println("tipoSubaru = " + tipoSubaru.getNombre());
-        System.out.println("tipoSubaru Descripción = " + tipoSubaru.getDescripcion());
-        System.out.println("tipoSubaru N° de puertas = " + tipoSubaru.getNumeroPuerta());
-
     }
 }
 
