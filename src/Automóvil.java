@@ -6,6 +6,7 @@ public class Automóvil {
     private String modelo;
     private Color color = Color.GRIS;
     private Motor motor;
+    private TipoAutomovil tipoAutomovil;
     private Estanque estanque;
     private Persona conductor;
     private Rueda[] ruedas;
@@ -49,6 +50,10 @@ public class Automóvil {
         return id;
     }
 
+    public TipoAutomovil getTipoAutomovil() {
+        return tipoAutomovil;
+    }
+
     public Motor getMotor() {
         return motor;
     }
@@ -74,6 +79,10 @@ public class Automóvil {
     }
     public void setColor(Color color) {
         this.color = color;
+    }
+
+    public void setTipoAutomovil(TipoAutomovil tipoAutomovil) {
+        this.tipoAutomovil = tipoAutomovil;
     }
 
     public static void setColorPatente(Color colorPatente) {

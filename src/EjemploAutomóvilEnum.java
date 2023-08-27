@@ -1,21 +1,23 @@
 public class EjemploAutomóvilEnum {
     public static void main(String[] args) {
         Automóvil subaru = new Automóvil("Subaru","Impreza");
-        subaru.setCilindrada(2.0);
-        subaru.setColor("Blanco");
-        subaru.setTipo(TipoAutomovil.HATCHBACK);
+        subaru.setMotor(new Motor(2.0,TipoMotor.BENCINA));
+        subaru.setEstanque(new Estanque());
+        subaru.setColor(Color.BLANCO);
+        subaru.setTipoAutomovil(TipoAutomovil.HATCHBACK);
 
-        Automóvil mazda = new Automóvil("Mazda","BT-50","Rojo",3.0,60);
-        mazda.setTipo(TipoAutomovil.PICKUP);
+        Automóvil mazda = new Automóvil("Mazda","BT-50",Color.ROJO,new Motor(3.0,TipoMotor.DIESEL));
+        mazda.setEstanque(new Estanque(45));
+        mazda.setTipoAutomovil(TipoAutomovil.PICKUP);
         System.out.println("mazda.getFabricante() = " + mazda.getFabricante());
 
         
-        TipoAutomovil tipo = subaru.getTipo();
+        TipoAutomovil tipo = subaru.getTipoAutomovil();
         System.out.println("tipoSubaru = " + tipo.getNombre());
         System.out.println("tipoSubaru Descripción = " + tipo.getDescripcion());
         System.out.println("tipoSubaru N° de puertas = " + tipo.getNumeroPuerta());
 
-        tipo = mazda.getTipo();
+        tipo = mazda.getTipoAutomovil();
 
         switch (tipo) {
             case CONVERTIBLE -> System.out.println("El automóvil es deportivo y descapotable de dos puertas");

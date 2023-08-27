@@ -3,14 +3,16 @@ import java.util.Date;
 public class EjemploAutomóvilStatic {
     public static void main(String[] args) {
         Automóvil subaru = new Automóvil("Subaru","Impreza");
-        subaru.setCilindrada(2.0);
+        subaru.setMotor(new Motor(2.0,TipoMotor.BENCINA));
+        subaru.setEstanque(new Estanque());
         subaru.setColor(Color.BLANCO);
+        subaru.setTipoAutomovil(TipoAutomovil.HATCHBACK);
 
-        Automóvil mazda = new Automóvil("Mazda","BT-50",Color.ROJO,3.0,60);
+        Automóvil mazda = new Automóvil("Mazda","BT-50",Color.ROJO,new Motor(3.0,TipoMotor.DIESEL));
 
-        Automóvil nissan = new Automóvil("Nisan","Navara",Color.GRIS,3.5,50);
+        Automóvil nissan = new Automóvil("Nisan","Navara",Color.GRIS,new Motor(4.0,TipoMotor.DIESEL),new Estanque(50));
 
-        Automóvil nissan2 = new Automóvil("Nisan","Navara",Color.GRIS,3.5,50);
+        Automóvil nissan2 = new Automóvil("Nisan","Navara",Color.GRIS,new Motor(3.5,TipoMotor.BENCINA),new Estanque(50));
         nissan2.setColor(Color.AMARILLO);
 
         Automóvil auto = new Automóvil();

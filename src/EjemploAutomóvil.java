@@ -3,27 +3,33 @@ import java.util.Date;
 
 public class EjemploAutomóvil {
     public static void main(String[] args) {
+
+        Motor motorSubaru = new Motor(2.0,TipoMotor.BENCINA);
+
         Automóvil subaru = new Automóvil("Subaru","Impreza");
-        subaru.setCilindrada(2.0);
-        subaru.setColor("azul");
+        subaru.setMotor(motorSubaru);
+        subaru.setColor(Color.BLANCO);
         System.out.println(subaru.verDetalle());
         System.out.println(subaru.acelerar(3000));
         System.out.println(subaru.frenar());
+
         System.out.println("==============================================\n");
 
-        Automóvil mazda = new Automóvil("Mazda","BT-50","Rojo",3.0,60);
+        Motor motorMazda = new Motor(3.0,TipoMotor.DIESEL);
+        Automóvil mazda = new Automóvil("Mazda","BT-50",Color.ROJO,motorMazda);
+        mazda.setEstanque(new Estanque(45));
         System.out.println(mazda.verDetalle());
         System.out.println(mazda.acelerarFrenar(4000));
         System.out.println("Kilómetros por litro "+ subaru.calcularConsumo(300,0.6f));
         System.out.println("Kilómetros por litro "+subaru.calcularConsumo(300,60));
         System.out.println("==============================================\n");
 
-        Automóvil nissan = new Automóvil("Nisan","Navara","Gris oscuro",3.5,50);
+        Automóvil nissan = new Automóvil("Nisan","Navara",Color.GRIS,new Motor(4.0,TipoMotor.DIESEL),new Estanque(50));
         System.out.println(nissan.verDetalle());
         System.out.println("Kilómetros por litro "+ nissan.calcularConsumo(300,60));
         System.out.println("==============================================\n");
 
-        Automóvil nissan2 = new Automóvil("Nisan","Navara","Gris oscuro",3.5,50);
+        Automóvil nissan2 = new Automóvil("Nisan","Navara",Color.GRIS,new Motor(3.5,TipoMotor.BENCINA),new Estanque(50));
         System.out.println("¿nissan == nissan2? --> " + (nissan == nissan2));
         /*"==" se utiliza para comparar la igualdad entre dos objetos o valores primitivos. Cuando se utiliza con objetos,
         el operador "==" compara las referencias de los objetos, es decir, verifica si ambos objetos apuntan a la misma
