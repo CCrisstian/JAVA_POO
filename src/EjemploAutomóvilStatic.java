@@ -9,6 +9,7 @@ public class EjemploAutomóvilStatic {
         subaru.setTipoAutomovil(TipoAutomovil.HATCHBACK);
 
         Automóvil mazda = new Automóvil("Mazda","BT-50",Color.ROJO,new Motor(3.0,TipoMotor.DIESEL));
+        //mazda.setEstanque(new Estanque());
 
         Automóvil nissan = new Automóvil("Nisan","Navara",Color.GRIS,new Motor(4.0,TipoMotor.DIESEL),new Estanque(50));
 
@@ -45,6 +46,7 @@ public class EjemploAutomóvilStatic {
         System.out.println("Automóvil.VELOCIDAD_MAX_CARRETERA = " + Automóvil.VELOCIDAD_MAX_CARRETERA);
         System.out.println("Automóvil.VELOCIDAD_MAX_CIUDAD =" + Automóvil.VELOCIDAD_MAX_CIUDAD);
 
+        System.out.println(mazda.calcularConsumo(300,70));
     }
 }
 

@@ -20,8 +20,8 @@ public class EjemploAutomóvil {
         mazda.setEstanque(new Estanque(45));
         System.out.println(mazda.verDetalle());
         System.out.println(mazda.acelerarFrenar(4000));
-        System.out.println("Kilómetros por litro "+ subaru.calcularConsumo(300,0.6f));
-        System.out.println("Kilómetros por litro "+subaru.calcularConsumo(300,60));
+        System.out.println("Kilómetros por litro " + mazda.calcularConsumo(300,0.6f));
+        System.out.println("Kilómetros por litro " + mazda.calcularConsumo(300,60));
         System.out.println("==============================================\n");
 
         Automóvil nissan = new Automóvil("Nisan","Navara",Color.GRIS,new Motor(4.0,TipoMotor.DIESEL),new Estanque(50));

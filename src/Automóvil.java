@@ -10,6 +10,7 @@ public class Automóvil {
     private Estanque estanque;
     private Persona conductor;
     private Rueda[] ruedas;
+    private int indiceRuedas;
 
     private static Color colorPatente = Color.NARANJO;
     /*En Java, la palabra clave "static" se utiliza para declarar un miembro de clase que pertenece a la clase en sí
@@ -59,6 +60,9 @@ public class Automóvil {
     }
 
     public Estanque getEstanque() {
+        if (estanque == null){
+            this.estanque = new Estanque();
+        }
         return estanque;
     }
 
@@ -111,6 +115,14 @@ public class Automóvil {
         this.ruedas = ruedas;
     }
 
+    public Automóvil addRuedas(Rueda rueda){
+        if (indiceRuedas < this.ruedas.length){
+            this.ruedas[indiceRuedas++] = rueda;
+        }
+        return this;
+    }
+
+
     /*----------------------------------------IMAGEN-----------------------------------------*/
     private ImageIcon icono = new ImageIcon("C:\\JAVA\\JAVA_POO\\src\\auto.jpg");
     public ImageIcon getIcono() {
@@ -121,7 +133,9 @@ public class Automóvil {
 
     public Automóvil(){
         this.id = ++ultimoId;
+        this.ruedas = new Rueda[5];
     }
+
     public Automóvil(String fabricante, String modelo) {
         this();
         this.fabricante = fabricante;
@@ -164,12 +178,34 @@ public class Automóvil {
 
     public String verDetalle(){
         StringBuilder sb = new StringBuilder();
-        sb.append("auto = " + this.fabricante);
+
+        if (getConductor() != null) {
+            sb.append("conductor = " + this.getConductor());
+        }
+
+        sb.append("\nauto = " + this.fabricante);
         sb.append("\nmodelo = " + this.modelo);
         sb.append("\nauto.color = " + this.color);
-        sb.append("\nauto.cilindrada = " + this.motor.getCilindrada());
+
+        if (this.getTipoAutomovil() != null) {
+            sb.append("\nauto.tipo = " + this.getTipoAutomovil().getDescripcion());
+        }
+
         sb.append("\nauto.colorPatente = " + Automóvil.colorPatente);
-        sb.append("\nauto.id = " + id + "\n");
+
+        if (this.motor != null){
+            sb.append("\nauto.cilindrada = " + this.motor.getCilindrada());
+        }
+
+        sb.append("\nauto.id = " + id);
+
+        if(getRuedas() != null) {
+            for (Rueda r : this.getRuedas()) {
+                sb.append("\nfabricante ruedas = " + r.getFabricante());
+                sb.append("\naro = " + r.getAro());
+                sb.append("\nancho: " + r.getAncho());
+            }
+        }
         return sb.toString();
     }
     public String acelerar(int rpm){
@@ -187,10 +223,10 @@ public class Automóvil {
     }
 
     public float calcularConsumo(int km,float porcentajeBencina){
-        return km/(estanque.getCapacidad()*porcentajeBencina);
+        return km/(this.getEstanque().getCapacidad()*porcentajeBencina);
     }
     public float calcularConsumo(int km,int porcentajeBencina){
-        return km/(estanque.getCapacidad()*(porcentajeBencina/100f));
+        return km/(this.getEstanque().getCapacidad()*(porcentajeBencina/100f));
     }
     public static float calcularConsumoESTATICO(int km, int porcentajeBencina){
         return km/(Automóvil.capacidadEstanqueESTATICO * (porcentajeBencina / 100f));
