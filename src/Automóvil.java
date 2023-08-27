@@ -167,6 +167,11 @@ public class Automóvil {
         sb.append("auto = " + this.fabricante);
         sb.append("\nmodelo = " + this.modelo);
         sb.append("\nauto.color = " + this.color);
+
+        if (this.getTipoAutomovil() != null) {
+            sb.append("\nauto.tipo = " + this.getTipoAutomovil().getDescripcion());
+        }
+
         sb.append("\nauto.cilindrada = " + this.motor.getCilindrada());
         sb.append("\nauto.colorPatente = " + Automóvil.colorPatente);
         sb.append("\nauto.id = " + id + "\n");
