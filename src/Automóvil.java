@@ -1,6 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
-public class Automóvil {
+public class Automóvil implements Comparable<Automóvil>{
 
     private String fabricante;
     private String modelo;
@@ -247,14 +247,15 @@ public class Automóvil {
 
     @Override
     public String toString() {
-        return "Automóvil{\n" +
-                "\tfabricante = " + fabricante +
-                "\n\tmodelo = " + modelo +
-                "\n\tcolor = " + color +
-                "\n\tcilindrada = " + motor.getCilindrada() +
-                "\n\tcapacidadEstanque = " + estanque.getCapacidad() +
-                "\n\tid = " + id +"\n}";
+        return "fabricante = " + fabricante +
+                "\nmodelo = " + modelo + "\n";
     }
 
-
+    @Override
+    public int compareTo(Automóvil a) {
+        return this.modelo.compareTo(a.modelo);
+    }
 }
+
+
+

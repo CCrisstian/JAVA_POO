@@ -1,3 +1,6 @@
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 public class EjemploAutomóvilArreglo {
     public static void main(String[] args) {
 
@@ -33,7 +36,29 @@ public class EjemploAutomóvilArreglo {
         Automóvil.setColorPatente(Color.AZUL);
 
         Automóvil audi = new Automóvil("Audi","A3");
-        audi.setConductor(new Persona("Jona","Andrade"));
+        audi.setConductor(new Persona("Jacinto","Cristaldo"));
+
+        Automóvil[] autos = new Automóvil[5];
+        autos[0]= subaru;
+        autos[1]= mazda;
+        autos[2]= nissan;
+        autos[3]= susuki;
+        autos[4]= audi;
+
+        for (Automóvil automóvil : autos) {
+            System.out.println(automóvil);
+        }
+
+        System.out.println("Arreglo ordenado alfabéticamente [A-Z] usando 'Arrays.sort' y 'compareTo', como parámetro de comparación 'modelo'\n");
+
+        Arrays.sort(autos);
+        for (Automóvil auto : autos) {
+            System.out.println(auto);
+        }
+
+
+
+
 
 
     }
